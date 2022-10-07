@@ -1,7 +1,12 @@
 ﻿#include"pch.h"
 #include"Helium-Example-Extension.h"
 
+#include<string>
+
 using namespace std;
+using namespace HeliumAPI;
+
+string logger_name = "HEE";
 
 namespace Helium_Example_Extension
 {
@@ -15,10 +20,13 @@ namespace Helium_Example_Extension
 	}
 	int ExtensionLoad(list<any> argument)
 	{
+		CreateExtensionLogger(logger_name);
+		ExtensionLogInfo(logger_name, "Test Output");
 		return 0;
 	}
 	int ExtensionUnload(list<any> argument)
 	{
+		DeleteExtensionLogger(logger_name);
 		return 0;
 	}
 	int ServerStart(list<any> argument)
